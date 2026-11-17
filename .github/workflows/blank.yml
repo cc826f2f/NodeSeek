@@ -14,20 +14,21 @@ permissions:
 
 jobs:
   run-nodeseek-sign:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: 检出代码仓库
-        uses: actions/checkout@v3
-      
+        uses: actions/checkout@v4
+
       - name: 配置Python环境
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.11.8'
+          python-version: '3.11'
 
       - name: 安装依赖包
         run: |
-          pip install curl_cffi requests --upgrade
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade curl_cffi requests
 
 
       - name: 运行签到脚本
